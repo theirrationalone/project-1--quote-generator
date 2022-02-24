@@ -1,0 +1,1 @@
+console.log('Quote Generator Application has been started !');
