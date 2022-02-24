@@ -1,14 +1,20 @@
 const nextQuoteBtn = document.getElementById('next-button');
 const quoteDes = document.getElementById('quote-container__quote');
 const quoteAuthor = document.getElementById('author');
+const twitterBtn = document.getElementById('twitter-button');
+const loaderMain = document.getElementById('loader-main');
+const quoteContainer = document.getElementById('quote-container');
 
 const randomQuoteHandler = event => {
+    loaderMain.style.display = 'block';
+    quoteContainer.style.display = 'none';
+
     const xhr = new XMLHttpRequest();
-    
+
     const quoteRequest = new Promise((resolve, reject) => {
         xhr.open('GET', 'https://type.fit/api/quotes');
         xhr.send();
-        
+
         xhr.onload = event => {
             return resolve(xhr.response);
         }
@@ -24,11 +30,26 @@ const randomQuoteHandler = event => {
         const randomQuoteIndex = Math.floor(Math.random() * quotesLength);
         const selectedRandomQuote = quotes[randomQuoteIndex];
         quoteDes.textContent = selectedRandomQuote.text;
-        quoteAuthor.textContent = selectedRandomQuote.author;
+        quoteAuthor.textContent = selectedRandomQuote.author || 'Unknown';
+        loaderMain.style.display = 'none';
+        quoteContainer.style.display = 'block';
     })
-    .catch(err => {
-        console.log(err);
-    });
+        .catch(err => {
+            console.log(err);
+            loaderMain.style.display = 'none';
+            quoteContainer.style.display = 'block';
+        });
+}
+
+const tweetHandler = async event => {
+    const quote = quoteDes.textContent;
+    const author = quoteAuthor.textContent || 'Unknown';
+
+    const url = encodeURI(`https://twitter.com/intent/tweet?text=${quote}\r\r\r~${author}`);
+
+    open(url.trim(), '_blank');
+    // location.assign(url.trim()); // for same page redirection...
 }
 
 nextQuoteBtn.addEventListener('click', randomQuoteHandler);
+twitterBtn.addEventListener('click', tweetHandler);

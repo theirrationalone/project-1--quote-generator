@@ -53,15 +53,13 @@ body {
 .button-container__button {
     width: 9rem;
     text-align: center;
-    background: none;
-    border: none;
-    cursor: pointer;
     border: 1px solid #4b4b4b;
     background: #4b4b4b;
     padding: 15px;
     font-size: 1rem;
     box-shadow: 0 2px 0px 2px #222222;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .button-container__button:hover {
@@ -92,7 +90,76 @@ body {
         font-size: 1.2rem;
     }
 
+    .button-container__button {
+        width: 6rem;
+    }
+    
+    .button-container__button:hover {
+        font-size: 0.7rem;
+    }
+    
+    .new-quote-button {
+        font-size: 0.7rem;
+    }
+
+    .new-quote-button:active,
+    .twitter-button:active {
+        font-size: 0.7rem;
+        background: #4b4b4b;
+    }
+
     .fa-quote-left {
         font-size: 2rem;
+    }
+}
+
+.loader-main {
+    display: none;
+    text-align: center;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: spinner 3000ms linear infinite;
+}
+
+.loader {
+    border: 20px solid;
+    border-image-source: linear-gradient(to bottom right, #17466e94, #49dbff);
+    border-image-width: 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spinner 700ms reverse infinite;
+}
+
+.loader2 {
+    border: 20px solid;
+    border-image-source: linear-gradient(to left, #a5d4fd94, #2470fd);
+    border-image-width: 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spinner 700ms forwards  infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
