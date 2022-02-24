@@ -74,7 +74,7 @@ const tweetHandler = async event => {
     const url = encodeURI(`https://twitter.com/intent/tweet?text=${quote}\r\r\r~${author}`);
 
     open(url.trim(), '_blank');
-    // location.assign(url.trim()); // for same page redirection...
+    // location.assign(url.trim()); // for same page redirection.....
 }
 
 nextQuoteBtn.addEventListener('click', randomQuoteHandler);
