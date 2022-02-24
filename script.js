@@ -34,11 +34,37 @@ const randomQuoteHandler = event => {
         loaderMain.style.display = 'none';
         quoteContainer.style.display = 'block';
     })
-        .catch(err => {
-            console.log(err);
-            loaderMain.style.display = 'none';
-            quoteContainer.style.display = 'block';
-        });
+         // COVERED CORS ERRORS + JSON PARESE ERROR AND ANTOHER WAY TO GET DATA USING SIDE EFFECT THROGH fetch() api this time !
+         
+        // .catch(err => {
+        //     console.log(err);
+        //     loaderMain.style.display = 'none';
+        //     quoteContainer.style.display = 'block';
+        // });
+    
+        // const getDynamicQuoteHandler = async () => {
+        //     const corsUrl = 'https://cors-anywhere.herokuapp.com/';      // cors-violation solution, if not worked then open this link once in your browser atleast !
+        //     const dynQuoteUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+        
+        //     const response = await fetch(corsUrl + dynQuoteUrl);
+        
+        //     try {
+        //         if(!response.ok) {
+        //             const errRes = await response.json();
+        //             throw new Error(errRes);
+        //         }
+        
+        //         const responseData = await response.json();
+        
+        //         console.log(responseData);
+        //     }catch(err) {
+        //         console.log('Oops, Failed To fetch qoute from api, Try again: ', err + ' ...!');
+        //         getDynamicQuoteHandler();
+        //     }
+        // }
+        
+        // getDynamicQuoteHandler();
+        
 }
 
 const tweetHandler = async event => {
