@@ -28,7 +28,7 @@ const randomQuoteHandler = event => {
     })
     .catch(err => {
         console.log(err);
-    })
+    });
 }
 
 nextQuoteBtn.addEventListener('click', randomQuoteHandler);
